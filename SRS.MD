@@ -340,8 +340,3 @@ Tuy nhiên, BA và Developer không phải bên quyết định cuối cùng v�
 
 Vì vậy, nếu giảng viên yêu cầu “stakeholder của toàn bộ dự án”, nên đưa BA và Developer vào danh sách stakeholder; nếu yêu cầu “stakeholder của hệ thống CAB”, trọng tâm là khách hàng, tài xế, doanh nghiệp, quản lý, các bộ phận vận hành và các hệ thống bên ngoài.
 
-Kết luận Bước 2
-
-Hệ thống CAB có các stakeholder chính trải từ người sử dụng trực tiếp (khách hàng, tài xế), bên sở hữu và quản lý (doanh nghiệp, ban quản lý), bên vận hành nội bộ (Admin, IT, CSKH, vận hành, tài chính) đến các bên ngoài (nhà cung cấp thanh toán, nhà cung cấp thông báo, cơ quan quản lý).
-
-Trong đó, Doanh nghiệp/Chủ hệ thống và Ban quản lý là nhóm cần được quản lý chặt chẽ vì có mức ảnh hưởng và mức độ quan trọng cao. Khách hàng và tài xế có mức độ quan trọng rất cao vì họ trực tiếp tạo ra và sử dụng dịch vụ CAB. Các stakeholder còn lại cần được quản lý theo mức độ ảnh hưởng và vai trò của họ trong từng quy trình.
