@@ -339,4 +339,234 @@ Developer: ảnh hưởng cao trong việc lựa chọn và triển khai giải 
 Tuy nhiên, BA và Developer không phải bên quyết định cuối cùng về yêu cầu kinh doanh; quyết định thuộc về doanh nghiệp và các stakeholder có thẩm quyền.
 
 Vì vậy, nếu giảng viên yêu cầu “stakeholder của toàn bộ dự án”, nên đưa BA và Developer vào danh sách stakeholder; nếu yêu cầu “stakeholder của hệ thống CAB”, trọng tâm là khách hàng, tài xế, doanh nghiệp, quản lý, các bộ phận vận hành và các hệ thống bên ngoài.
+BƯỚC 3 – XÁC ĐỊNH BUSINESS GOAL
+
+Dựa trên yêu cầu sơ khởi của hệ thống CAB, các Business Goal (BG) nên được xác định từ mục tiêu kinh doanh của doanh nghiệp, không chỉ mô tả chức năng của hệ thống.
+
+Mã BG	Business Goal	Mục đích / Ý nghĩa
+BG01	Giảm thời gian tìm và phân công tài xế	Tự động hóa quá trình tìm kiếm và phân công tài xế phù hợp, giúp khách hàng nhanh chóng được ghép với tài xế và giảm thời gian chờ.
+BG02	Tự động hóa quy trình tìm tài xế	Xây dựng chức năng tự động tìm kiếm tài xế dựa trên các tiêu chí phù hợp, giảm sự can thiệp thủ công của nhân viên vận hành.
+BG03	Hỗ trợ nhiều phương thức thanh toán	Cho phép khách hàng thanh toán chuyến xe bằng tiền mặt hoặc thanh toán trực tuyến, đáp ứng nhu cầu đa dạng của khách hàng.
+Giải thích cụ thể
+
+BG01 – Giảm thời gian tìm và phân công tài xế
+
+Mục tiêu kinh doanh là rút ngắn thời gian từ lúc khách hàng tạo yêu cầu đặt xe đến lúc được xác nhận tài xế, từ đó nâng cao trải nghiệm khách hàng và hiệu quả vận hành.
+
+BG02 – Tự động hóa việc tìm tài xế
+
+Hệ thống cần có chức năng tự động tìm tài xế phù hợp thay vì phụ thuộc hoàn toàn vào nhân viên. Điều này giúp giảm công việc thủ công và tăng khả năng xử lý nhiều yêu cầu đặt xe cùng lúc.
+
+BG03 – Hỗ trợ thanh toán linh hoạt
+
+Hệ thống cho phép khách hàng lựa chọn thanh toán bằng tiền mặt hoặc thanh toán trực tuyến, giúp tăng tính thuận tiện và đáp ứng nhiều nhu cầu sử dụng dịch vụ.
+
+Mối quan hệ giữa Business Goal và chức năng
+BUSINESS GOAL
+     │
+     ├── BG01: Giảm thời gian tìm tài xế
+     │       ↓
+     │   Chức năng tự động tìm & phân công tài xế
+     │
+     ├── BG02: Tự động hóa tìm tài xế
+     │       ↓
+     │   Hệ thống tự động xác định tài xế phù hợp
+     │
+     └── BG03: Thanh toán linh hoạt
+             ↓
+         Thanh toán tiền mặt
+         Thanh toán trực tuyến
+
+Lưu ý: BG01 và BG02 khá gần nhau. Nếu bài yêu cầu Business Goal phải khác nhau rõ ràng, mình khuyên dùng:
+
+BG01: Giảm thời gian khách hàng chờ được tìm tài xế.
+BG02: Tự động hóa quy trình tìm và phân công tài xế.
+BG03: Cung cấp phương thức thanh toán linh hoạt bằng tiền mặt và trực tuyến.
+
+Như vậy sẽ dễ phân biệt “kết quả kinh doanh muốn đạt được” (BG01) với “định hướng cải tiến hoạt động” (BG02).
+BƯỚC 4 – XÁC ĐỊNH PHẠM VI YÊU CẦU ĐỂ THỰC HIỆN
+
+Dựa trên các yêu cầu và Business Goal đã xác định ở các bước trước, phạm vi của hệ thống CAB – hệ thống đặt xe được xác định như sau.
+
+4.1. Phạm vi tổng thể
+
+Hệ thống tập trung vào việc hỗ trợ toàn bộ quy trình đặt xe:
+
+Khách hàng đặt xe → Hệ thống tìm tài xế → Phân công tài xế → Tài xế thực hiện chuyến → Tính cước → Thanh toán → Thông báo → Đánh giá
+
+Mục tiêu của phạm vi là xây dựng một hệ thống đủ chức năng để vận hành dịch vụ đặt xe, nhưng không mở rộng sang những chức năng chưa cần thiết ở giai đoạn đầu.
+
+4.2. Các chức năng nằm trong phạm vi
+STT	Chức năng	Mô tả
+1	Quản lý khách hàng	Đăng ký, đăng nhập, xác thực, quản lý thông tin cá nhân và lịch sử chuyến đi.
+2	Quản lý tài xế	Đăng nhập, xác thực, quản lý thông tin tài xế, trạng thái hoạt động và thông tin phương tiện.
+3	Quản lý đặt xe	Khách hàng tạo yêu cầu đặt xe, nhập điểm đón, điểm đến và thông tin chuyến.
+4	Tìm kiếm tài xế	Hệ thống tự động tìm tài xế phù hợp với yêu cầu của khách hàng.
+5	Phân công tài xế	Hệ thống phân công tài xế cho chuyến xe.
+6	Quản lý chuyến xe	Theo dõi trạng thái chuyến: tạo → xác nhận → đang thực hiện → hoàn thành/hủy.
+7	Tính cước	Xác định số tiền khách hàng cần thanh toán theo quy tắc kinh doanh.
+8	Thanh toán	Hỗ trợ thanh toán tiền mặt và thanh toán trực tuyến.
+9	Thông báo	Gửi thông báo về trạng thái đặt xe, tài xế, chuyến xe và thanh toán.
+10	Đánh giá	Khách hàng đánh giá tài xế/chuyến xe sau khi hoàn thành.
+11	Quản trị hệ thống	Quản lý tài khoản, quyền truy cập và cấu hình hệ thống.
+12	Bảo mật & phân quyền	Xác thực người dùng, kiểm soát quyền và bảo vệ dữ liệu.
+13	Logging/Audit	Lưu vết các thao tác quan trọng để kiểm tra khi có sự cố.
+14	Báo cáo cơ bản	Cung cấp dữ liệu để doanh nghiệp theo dõi hoạt động của hệ thống.
+4.3. Xác định các mô-đun cơ bản
+
+Hệ thống CAB có thể được chia thành các mô-đun sau:
+
+                         HỆ THỐNG CAB
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+  QUẢN LÝ NGƯỜI DÙNG    QUẢN LÝ ĐẶT XE       THANH TOÁN
+        │                     │                     │
+    ┌───┴───┐             ┌───┴────┐           ┌────┴────┐
+    │       │             │        │           │         │
+ Khách   Tài xế         Đặt xe   Tìm tài xế   Tiền mặt  Online
+ hàng                 Phân công
+        │                     │
+        └─────────────────────┼─────────────────────┐
+                              │                     │
+                       QUẢN LÝ CHUYẾN          THÔNG BÁO
+                              │                     │
+                         TÍNH CƯỚC              ĐÁNH GIÁ
+                              │
+                         QUẢN TRỊ
+                              │
+                     BẢO MẬT / PHÂN QUYỀN
+                              │
+                       LOGGING / AUDIT
+Danh sách mô-đun
+Mã	Mô-đun	Chức năng chính
+M01	Quản lý khách hàng	Tài khoản, thông tin cá nhân, lịch sử chuyến
+M02	Quản lý tài xế	Tài khoản, trạng thái, phương tiện
+M03	Đặt xe	Tạo và quản lý yêu cầu đặt xe
+M04	Tìm & phân công tài xế	Tự động tìm và phân công tài xế
+M05	Quản lý chuyến	Quản lý trạng thái và thông tin chuyến
+M06	Tính cước	Tính số tiền phải thanh toán
+M07	Thanh toán	Tiền mặt và trực tuyến
+M08	Thông báo	Gửi thông báo cho khách hàng/tài xế
+M09	Đánh giá	Đánh giá sau chuyến
+M10	Quản trị	Quản lý tài khoản, quyền và cấu hình
+M11	Bảo mật	Xác thực, phân quyền, bảo vệ dữ liệu
+M12	Logging/Audit	Lưu vết thao tác quan trọng
+M13	Báo cáo	Theo dõi hoạt động và dữ liệu cơ bản
+4.4. Xác định MVP
+
+MVP (Minimum Viable Product) là phiên bản đầu tiên có đủ chức năng cốt lõi để hệ thống CAB có thể vận hành và kiểm chứng nhu cầu thực tế.
+
+Các chức năng MVP
+Mã	Chức năng	Ưu tiên
+MVP01	Đăng ký/đăng nhập khách hàng	🔴 Bắt buộc
+MVP02	Đăng nhập/xác thực tài xế	🔴 Bắt buộc
+MVP03	Tạo yêu cầu đặt xe	🔴 Bắt buộc
+MVP04	Tự động tìm tài xế	🔴 Bắt buộc
+MVP05	Phân công tài xế	🔴 Bắt buộc
+MVP06	Tài xế nhận/phản hồi chuyến	🔴 Bắt buộc
+MVP07	Quản lý trạng thái chuyến	🔴 Bắt buộc
+MVP08	Tính cước cơ bản	🔴 Bắt buộc
+MVP09	Thanh toán tiền mặt	🔴 Bắt buộc
+MVP10	Thanh toán trực tuyến	🔴 Bắt buộc
+MVP11	Thông báo cơ bản	🔴 Bắt buộc
+MVP12	Đánh giá sau chuyến	🟡 Nên có
+MVP13	Quản trị & phân quyền	🔴 Bắt buộc
+MVP14	Logging/Audit	🔴 Bắt buộc
+MVP phải đáp ứng 3 Business Goal chính
+BG01
+Giảm thời gian tìm tài xế
+        ↓
+Tự động tìm & phân công tài xế
+
+
+
+
+BG02
+Tự động hóa việc tìm tài xế
+        ↓
+Mô-đun tìm kiếm và phân công tài xế
+
+
+
+
+BG03
+Hỗ trợ thanh toán linh hoạt
+        ↓
+┌──────────────────┐
+│ Thanh toán tiền mặt │
+│ Thanh toán online   │
+└──────────────────┘
+4.5. IN SCOPE – Những gì sẽ thực hiện
+Người dùng
+Quản lý khách hàng.
+Quản lý tài xế.
+Quản lý thông tin phương tiện.
+Đăng nhập và xác thực.
+Phân quyền người dùng.
+Quy trình đặt xe
+Tạo yêu cầu đặt xe.
+Tìm tài xế.
+Phân công tài xế.
+Tài xế phản hồi.
+Quản lý trạng thái chuyến.
+Hoàn thành/hủy chuyến.
+Thanh toán
+Tính cước.
+Thanh toán tiền mặt.
+Thanh toán trực tuyến.
+Theo dõi trạng thái giao dịch.
+Hỗ trợ
+Thông báo.
+Đánh giá.
+Quản trị.
+Logging/Audit.
+Báo cáo cơ bản.
+Bảo mật dữ liệu.
+4.6. OUT OF SCOPE – Những gì không nên làm ở giai đoạn đầu
+
+Để tránh Scope Creep (phạm vi dự án bị mở rộng không kiểm soát), các chức năng sau không nên đưa vào MVP:
+
+Chức năng	Lý do
+AI dự đoán nhu cầu đặt xe	Không cần thiết cho chức năng đặt xe cơ bản.
+AI tự động tối ưu giá	Quy tắc tính cước hiện chưa được xác định.
+Chương trình tích điểm nâng cao	Không thuộc quy trình đặt xe cốt lõi.
+Hệ thống thành viên VIP phức tạp	Có thể phát triển ở giai đoạn sau.
+Quảng cáo trên ứng dụng	Không phục vụ trực tiếp mục tiêu đặt xe.
+Phân tích Big Data nâng cao	Chưa cần thiết khi hệ thống mới triển khai.
+Chatbot AI	Có thể bổ sung sau khi hệ thống cốt lõi ổn định.
+Quá nhiều loại dịch vụ CAB	Nên tập trung vào dịch vụ chính trước.
+Tích hợp quá nhiều cổng thanh toán	Chỉ cần các phương thức đã được doanh nghiệp xác nhận.
+Tích hợp nhiều nhà cung cấp thông báo cùng lúc	Chỉ cần thiết kế kiến trúc có khả năng thay đổi nhà cung cấp.
+Các chức năng không liên quan đến đặt xe	Làm tăng chi phí và thời gian phát triển.
+4.7. Các vấn đề chưa đưa vào phạm vi chính thức
+
+Một số yêu cầu khách hàng chưa chốt, do đó BA không nên tự ý quyết định mà cần xác nhận:
+
+STT	Nội dung cần xác nhận
+1	Cách tính cước
+2	Tiêu chí ưu tiên tài xế
+3	Thời gian tài xế phải phản hồi
+4	Chính sách hủy chuyến
+5	Xử lý khi mất kết nối mạng
+6	Thời gian lưu trữ dữ liệu
+7	Quyền của từng loại người dùng
+8	Phương thức thanh toán trực tuyến cụ thể
+9	Nhà cung cấp thanh toán
+10	Nhà cung cấp thông báo
+11	Các loại dịch vụ CAB sẽ bổ sung trong tương lai
+4.8. Tóm tắt phạm vi
+IN SCOPE
+
+Quản lý khách hàng → Quản lý tài xế → Đặt xe → Tìm tài xế → Phân công → Quản lý chuyến → Tính cước → Thanh toán tiền mặt/online → Thông báo → Đánh giá → Quản trị → Bảo mật → Logging.
+
+OUT OF SCOPE
+
+AI nâng cao → Quảng cáo → Big Data → Loyalty nâng cao → Chatbot AI → Quá nhiều dịch vụ mới → Các chức năng không trực tiếp phục vụ quy trình đặt xe.
+
+Trọng tâm của MVP
+
+MVP = Đặt xe + Tự động tìm tài xế + Phân công tài xế + Quản lý chuyến + Tính cước + Thanh toán tiền mặt/online + Thông báo + Quản trị cơ bản.
+
+Như vậy, Bước 4 đã xác định được rõ phạm vi thực hiện, các mô-đun cơ bản, MVP, In Scope và Out of Scope, đồng thời tách riêng những yêu cầu chưa đủ thông tin để triển khai.
 
